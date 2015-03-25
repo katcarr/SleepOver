@@ -1,0 +1,6 @@
+<%= bootstrap_form_for @space do |f| %>
+  <%= f.text_field :address %>
+  <%= f.text_field :description %>
+  <%= f.number_field :cost %>
+  <%= f.submit 'Add Space' %>
+<% end %>
