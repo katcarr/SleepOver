@@ -7,6 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">SleepOver</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <% if current_user == nil %>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username">
+              <input type="text" class="form-control" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-info">Login</button>
+          </form>
+
+        <% else %>
+          <div class="navbar-right">
+            <%= current_user.email %>
+          </div>
+
+        <% end %>
+        
+      </div>
+    </div>
+  </nav>
   <div class="container">
 
     <p class="notice"><%= notice %></p>
