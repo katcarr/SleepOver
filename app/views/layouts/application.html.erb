@@ -16,28 +16,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">SleepOver</a>
+        <a class="navbar-brand" href="/spaces">SleepOver</a>
       </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div id="user_nav">
 
-        <% if current_user == nil %>
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Username">
-              <input type="text" class="form-control" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-info">Login</button>
-          </form>
-
-        <% else %>
+        <% if user_signed_in? %>
           <div class="navbar-right">
             <%= current_user.email %>
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete , class: 'btn btn-danger' %>
           </div>
-
+        <% else %>
+          <div class="navbar-right">
+            <%= link_to "Log in", new_user_session_path, class: 'btn btn-primary' %>
+          </div>
         <% end %>
-        
-      </div>
+
     </div>
   </nav>
   <div class="container">
