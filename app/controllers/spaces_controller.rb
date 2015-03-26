@@ -12,7 +12,7 @@ class SpacesController<ApplicationController
     @space.user = current_user
     if @space.save
       flash[:notice] = "Successfully created your space."
-      redirect_to new_space_photo_path(@space)
+      redirect_to space_path(@space)
     else
       flash[:alert] = "There were problems with your space. Try again."
       redirect_to :back

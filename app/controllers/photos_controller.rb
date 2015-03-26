@@ -6,15 +6,21 @@ class PhotosController<ApplicationController
 
   def create
     @space = Space.find(params[:space_id])
-    @photo = Photo.new(photo_params)
-    @photo.space_id = @space.id
-    if @photo.save
-      flash[:notice] = "Photo Uploaded"
-      redirect_to :back
-    else
+    if params[:photo] == nil
       flash[:alert] = "Try Again"
       redirect_to :back
+    else
+      @photo = Photo.new(photo_params)
+      @photo.space_id = @space.id
+      if @photo.save
+        flash[:notice] = "Photo Uploaded"
+        redirect_to :back
+      else
+        flash[:alert] = "Try Again"
+        redirect_to :back
+      end
     end
+
   end
 
   def destroy
@@ -29,7 +35,7 @@ class PhotosController<ApplicationController
 
   private
     def photo_params
-      params.require(:photo).permit(:image)
+        params.require(:photo).permit(:image)
     end
 
 end
