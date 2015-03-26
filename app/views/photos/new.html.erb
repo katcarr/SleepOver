@@ -1,23 +1,14 @@
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title "><%= @space.address %><span class="pull-right"><%= @space.user.email %></span></h3>
-      </div>
-      <div class="panel-body">
-        <h3>Description:</h3>
-        <p><%= @space.description %></p>
-        <h3>$ <%= @space.cost%> /night </h3>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2"></div>
-</div>
 
 <h4>Add Photo</h4>
 
-<%= bootstrap_form_for [@space, @photo] do |f| %>
-  <%= f.file_field :image %>
-  <%= f.submit 'Add Photo' %>
+<%= bootstrap_form_for [@space, @photo], :html => { :multipart => true } do |f| %>
+  <%= f.file_field :image, class: "btn btn-sm" %>
+  <%= f.submit 'Add Photo', class: "btn btn-sm btn-success" %>
+<% end %>
+
+
+
+<% @space.photos.each do |photo|%>
+  <%= image_tag photo.image.url(:thumb) %>
+  <%= link_to "Delete", space_photo_path(@space,photo), method: :delete %>
 <% end %>
