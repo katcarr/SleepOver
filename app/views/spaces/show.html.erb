@@ -1,1 +1,17 @@
-Welcome to the space show view!
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title "><%= @space.address %><span class="pull-right"><%= @space.user.email %></span></h3>
+      </div>
+      <div class="panel-body">
+        <h3>Description:</h3>
+        <p><%= @space.description %></p>
+        <img src="<%= @space.photo %>" alt="photo of rental" />
+        <h3>$ <%= @space.cost%> /night </h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

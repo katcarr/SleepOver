@@ -10,7 +10,6 @@ class SpacesController<ApplicationController
   def create
     @space = Space.new(space_params)
     @space.user = current_user
-binding.pry
     if @space.save
       flash[:notice] = "Successfully created your space."
       redirect_to space_path(@space)
@@ -26,6 +25,6 @@ binding.pry
 
 private
   def space_params
-    params.require(:space).permit(:address,:description,:cost)
+    params.require(:space).permit(:address,:description,:cost,:photo)
   end
 end

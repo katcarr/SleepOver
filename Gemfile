@@ -15,6 +15,7 @@ gem 'bootstrap_form'
 gem 'bootswatch-rails'
 gem 'letter_opener', :group => :development
 gem 'devise'
+gem "paperclip", "~> 4.2"
 
 group :development, :test do
   gem 'byebug'
