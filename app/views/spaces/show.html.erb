@@ -11,6 +11,8 @@
         <h3>$ <%= @space.cost%> /night </h3>
         <% if @space.user == current_user%>
           <%= link_to 'Add Photos', new_space_photo_path(@space), class: "btn btn-primary add-photo-btn" %>
+        <% else%>
+          <%= link_to 'Make a reservation', new_space_booking_path(@space), class: "btn btn-primary add-photo-btn" %>    
         <%end%>
         <% @space.photos.each do |photo| %>
           <%= image_tag photo.image.url , class: "img-responsive img-rounded"%>
