@@ -14,3 +14,10 @@
   </div>
   <div class="col-sm-2"></div>
 </div>
+
+<h4>Add Photo</h4>
+
+<%= bootstrap_form_for [@space, @photo] do |f| %>
+  <%= f.file_field :image %>
+  <%= f.submit 'Add Photo' %>
+<% end %>

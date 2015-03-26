@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :users
-  resources :spaces
+  resources :spaces do
+    resources :photos
+  end
 
 end
