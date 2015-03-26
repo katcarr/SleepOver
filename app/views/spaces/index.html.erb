@@ -4,6 +4,7 @@
     <div class="col-sm-2"></div>
 
     <div class="col-sm-8">
+      <%= link_to space_path(space) do %>
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title "><%= space.address %><span class="pull-right"><%=  space.user.email %></span></h3>
@@ -23,6 +24,9 @@
           </div>
         </div>
       </div>
+
+      <% end %>
+
     </div>
 
     <div class="col-sm-2"></div>
