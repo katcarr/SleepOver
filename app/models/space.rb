@@ -5,5 +5,5 @@ class Space<ActiveRecord::Base
   validates :cost, presence: true
   validates :description, presence: true
 
-
+  has_many :bookings
 end

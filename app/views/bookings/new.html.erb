@@ -1,7 +1,15 @@
 
+<% if current_user %>
+
 <h3>Reserve <%= @space.address %></h3>
 <%= bootstrap_form_for [@space,@booking] do |f| %>
   <%= f.date_field :start_date %>
   <%= f.date_field :end_date %>
   <%= f.submit "Reserve", class: "btn btn-warning" %>
+<% end %>
+
+<% else %>
+
+  <h3><%= link_to "Create A SleepOver Account to Make A Reservation", new_user_registration_path, class: "text-warning" %></h3>
+
 <% end %>

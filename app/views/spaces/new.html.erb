@@ -1,6 +1,18 @@
-<%= bootstrap_form_for @space do |f| %>
-  <%= f.text_field :address %>
-  <%= f.text_field :description %>
-  <%= f.text_field :cost %>
-  <%= f.submit 'Add Space' %>
+
+
+<% if current_user %>
+
+  <h3>Add Listing</h3>
+
+  <%= bootstrap_form_for @space do |f| %>
+    <%= f.text_field :address %>
+    <%= f.text_field :description %>
+    <%= f.text_field :cost %>
+    <%= f.submit 'Add Space' %>
+  <% end %>
+
+<% else %>
+
+  <h3><%= link_to "Create A SleepOver Account to Add Space", new_user_registration_path, class: "text-warning" %></h3>
+
 <% end %>

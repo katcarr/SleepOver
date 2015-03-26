@@ -1,5 +1,6 @@
 <h2><%= current_user.email %></h2>
 
+<% if current_user.spaces.any? %>
   <div class="row">
 
     <div class="col-sm-2"></div>
@@ -27,8 +28,11 @@
     </div>
     <%= link_to "Add listing", new_space_path, class: "btn btn-default pull-right"%>
   </div>
+<% else %>
+    <%= link_to "Add listing", new_space_path, class: "btn btn-default pull-right"%>
+<% end %>
 
-
+<% if current_user.bookings.any? %>
   <div class="row">
 
     <div class="col-sm-2"></div>
@@ -36,15 +40,15 @@
     <div class="col-sm-10">
       <h3><span class="text-primary">Bookings</span></h3>
       <ul class="list-group">
-        <% current_user.spaces.each do |space| %>
+        <% current_user.bookings.each do |booking| %>
           <li class="list-group-item">
             <div class="row">
               <div class="col-sm-10">
-                <h4><%= space.address %></h4>
+                <h4><%= booking.space.address %></h4>
               </div>
               <div class="col-sm-2">
-                <% if space.photos.first %>
-                  <%= image_tag space.photos.first.image.url(:thumb), class: "img-responsive img-rounded" %>
+                <% if booking.space.photos.first %>
+                  <%= image_tag booking.space.photos.first.image.url(:thumb), class: "img-responsive img-rounded" %>
                 <% end %>
               </div>
             </div>
@@ -53,3 +57,4 @@
       </ul>
     </div>
   </div>
+<% end %>
